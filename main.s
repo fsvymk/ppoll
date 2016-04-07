@@ -25,35 +25,35 @@ main:
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	movl	$0, -300(%rbp)
+	movl	$0, -304(%rbp)
 	jmp	.L2
 .L3:
-	movl	-300(%rbp), %eax
+	movl	-304(%rbp), %eax
 	cltq
 	movq	$0, -272(%rbp,%rax,8)
-	addl	$1, -300(%rbp)
+	addl	$1, -304(%rbp)
 .L2:
-	cmpl	$31, -300(%rbp)
+	cmpl	$31, -304(%rbp)
 	jle	.L3
 	movl	$2, %esi
 	movl	$.LC0, %edi
 	movl	$0, %eax
 	call	open
-	movl	%eax, -296(%rbp)
-	movl	-296(%rbp), %eax
+	movl	%eax, -300(%rbp)
+	movl	-300(%rbp), %eax
 	movl	%eax, %esi
 	movl	$.LC1, %edi
 	movl	$0, %eax
 	call	printf
 .L8:
-	movl	-296(%rbp), %eax
+	movl	-300(%rbp), %eax
 	movl	$6, %edx
 	movl	$.LC2, %esi
 	movl	%eax, %edi
 	call	write
 	movq	%rax, -288(%rbp)
 	leaq	-272(%rbp), %rcx
-	movl	-296(%rbp), %eax
+	movl	-300(%rbp), %eax
 	movl	$32, %edx
 	movq	%rcx, %rsi
 	movl	%eax, %edi
@@ -61,29 +61,29 @@ main:
 	movq	%rax, -280(%rbp)
 	cmpq	$0, -288(%rbp)
 	jns	.L4
-	movl	-296(%rbp), %eax
+	movl	-300(%rbp), %eax
 	movl	%eax, %edi
 	call	close
-	movl	$-1, -296(%rbp)
+	movl	$-1, -300(%rbp)
 	jmp	.L5
 .L6:
-	movl	-296(%rbp), %eax
+	movl	-300(%rbp), %eax
 	cltq
 	movl	$100, %edx
 	movl	$0, %esi
 	movq	%rax, %rdi
 	call	poll
-	movl	%eax, -292(%rbp)
-	movl	-296(%rbp), %eax
+	movl	%eax, -296(%rbp)
+	movl	-300(%rbp), %eax
 	movl	%eax, %edi
 	call	close
 	movl	$2, %esi
 	movl	$.LC0, %edi
 	movl	$0, %eax
 	call	open
-	movl	%eax, -296(%rbp)
+	movl	%eax, -292(%rbp)
 .L5:
-	cmpl	$-1, -296(%rbp)
+	cmpl	$-1, -300(%rbp)
 	je	.L6
 	jmp	.L8
 .L4:
