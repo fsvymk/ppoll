@@ -32,8 +32,12 @@ int main(int argc, char *argv[])
         if(szw<0){
             // fd was closed. re-open it.
             //printf("reconnect. ");
-            while(!ret){
-                ret = poll(fd, 0, 1000);
+
+            close(fd);
+            fd = -1;
+
+            while(fd==-1){
+                ret = poll(fd, 0, 100);
                 close(fd);
                 int fd = open("/dev/usbtmc0", O_RDWR);
             }
