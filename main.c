@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
             while(fd==-1){
                 ret = poll(fd, 0, 100);
                 close(fd);
-                int fd = open("/dev/usbtmc0", O_RDWR);
+                fd = open("/dev/usbtmc0", O_RDWR);
             }
         }
         else{
